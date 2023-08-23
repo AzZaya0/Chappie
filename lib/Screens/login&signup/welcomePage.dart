@@ -12,9 +12,12 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+//--------------------------- Provider & MediaQuary -----------------------------\\
     final provider = Provider.of<WelcomePageProvider>(context, listen: false);
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+//-------------------------------------------------------------------------------\\
+//--------------------------------- Main ---------------------------------------\\
 
     return SafeArea(
       child: Scaffold(
@@ -24,6 +27,7 @@ class WelcomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
+                //-------------------- Text "Welcome To chappie"----------------
                 padding: EdgeInsets.only(bottom: screenWidth * 0.1),
                 child: MyText(
                     text: 'Welcome to\nChappie',
@@ -32,11 +36,13 @@ class WelcomePage extends StatelessWidget {
                     fontsize: screenWidth * 0.1),
               ),
               Image.asset(
+                // <------------------ Image "Robot Image"----------------------
                 'lib/assets/cutie.png',
                 height: screenHeight * 0.5,
               ),
               Center(
                 child: GestureDetector(
+                  // <---------------- Button "Google Login Button"-------------
                   onTap: () {},
                   child: Container(
                     height: screenHeight * 0.085,
@@ -64,6 +70,7 @@ class WelcomePage extends StatelessWidget {
                 ),
               ),
               Padding(
+                // <------------------ Text  'or'-------------------------------
                 padding: EdgeInsets.only(
                     top: screenHeight * 0.02, bottom: screenHeight * 0.02),
                 child: Center(
@@ -75,6 +82,7 @@ class WelcomePage extends StatelessWidget {
               ),
               Center(
                 child: MyButton(
+                  //<----------------- Button "To Login Page"-------------------
                   ontap: () {
                     provider.navigateTo(context);
                   },

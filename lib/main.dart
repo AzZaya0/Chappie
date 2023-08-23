@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:chappie/Provider/loginPageProvider.dart';
 import 'package:chappie/Provider/welcomePageProvider.dart';
 import 'package:chappie/Screens/login&signup/welcomePage.dart';
