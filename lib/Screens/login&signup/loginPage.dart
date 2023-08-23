@@ -21,6 +21,10 @@ class LoginPage extends StatelessWidget {
                 color: kTextColor,
                 fontsize: 40,
               ),
+              Image.asset(
+                'lib/assets/loginCutie.png',
+                height: screenHeight * 0.45,
+              ),
             ],
           ),
         ),

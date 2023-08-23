@@ -12,19 +12,10 @@ Future<void> main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(
       create: (_) => WelcomePageProvider(),
-      child: MyApp(),
+      child: MaterialApp(
+        home: WelcomePage(),
+        debugShowCheckedModeBanner: false,
+      ),
     )
   ]));
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: WelcomePage(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
 }
