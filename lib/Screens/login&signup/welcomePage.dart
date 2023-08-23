@@ -19,12 +19,7 @@ class WelcomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: kBlackColor,
-        body: Container(
-          margin: EdgeInsets.only(
-            left: screenWidth * 0.04,
-            right: screenWidth * 0.04,
-            top: screenHeight * 0.03,
-          ),
+        body: MarginContainer(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
