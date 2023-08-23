@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "835951794646",
+    "project_id": "chappie-56825",
+    "storage_bucket": "chappie-56825.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835951794646:android:c3486f161a04b5905cac77",
+        "android_client_info": {
+          "package_name": "com.example.chappie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835951794646-il54c2j51c8qei8jv5v4t6k206ob1emi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd9ddb2ExmWQcZn8yi9vnR5x8_sIAyAS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835951794646-il54c2j51c8qei8jv5v4t6k206ob1emi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
