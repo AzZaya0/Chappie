@@ -9,13 +9,14 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(
-      create: (_) => WelcomePageProvider(),
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => WelcomePageProvider(),
+        )
+      ],
       child: MaterialApp(
         home: WelcomePage(),
         debugShowCheckedModeBanner: false,
-      ),
-    )
-  ]));
+      )));
 }
