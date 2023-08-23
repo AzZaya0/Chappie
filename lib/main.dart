@@ -1,3 +1,4 @@
+import 'package:chappie/Provider/loginPageProvider.dart';
 import 'package:chappie/Provider/welcomePageProvider.dart';
 import 'package:chappie/Screens/login&signup/welcomePage.dart';
 import 'package:chappie/firebase_options.dart';
@@ -13,6 +14,9 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(
           create: (_) => WelcomePageProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => LoginPageProvider(),
         )
       ],
       child: MaterialApp(
