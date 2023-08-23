@@ -12,7 +12,7 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<WelcomePageProvider>(context);
+    final provider = Provider.of<WelcomePageProvider>(context, listen: false);
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
@@ -81,7 +81,7 @@ class WelcomePage extends StatelessWidget {
               Center(
                 child: MyButton(
                   ontap: () {
-                    provider.navigateto(context);
+                    provider.navigateTo(context);
                   },
                   screenWidth: screenWidth,
                   screenHeight: screenHeight,
