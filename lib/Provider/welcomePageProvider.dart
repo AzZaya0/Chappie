@@ -1,6 +1,8 @@
 import 'package:chappie/Screens/login&signup/loginPage.dart';
 import 'package:flutter/material.dart';
 
+import 'authentications/googleAuth.dart';
+
 class WelcomePageProvider with ChangeNotifier {
   void navigateTo(context) {
     Navigator.push(
@@ -8,5 +10,9 @@ class WelcomePageProvider with ChangeNotifier {
         MaterialPageRoute(
           builder: (context) => LoginPage(),
         ));
+  }
+
+  void googleSignIn(context) {
+    GoogleSignin().signinWithGoogle().then((value) => Navigator.pop(context));
   }
 }
