@@ -6,29 +6,52 @@ import 'package:flutter/material.dart';
 
 import '../../Screens/home/home.dart';
 
-class AuthPage extends StatelessWidget {
+class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
 
   @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+  @override
+  void initState() {
+    super.initState();
+    Connectivitycheck();
+  }
+
+  dynamic result1;
+  void Connectivitycheck() async {
+    var result = await Connectivity().checkConnectivity();
+    print(result.name);
+    setState(() {
+      result1 = result.name;
+      print(result1);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: StreamBuilder<ConnectivityResult>(
-          stream: Connectivity().onConnectivityChanged,
-          builder: (context, snapshot) {
-            if (snapshot.data == ConnectivityResult.none) {
-              return NoInternetPage();
-            } else {
-              return StreamBuilder<User?>(
-                  stream: FirebaseAuth.instance.authStateChanges(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return HomePage();
-                    } else {
-                      return WelcomePage();
-                    }
-                  });
-            }
-          }),
-    );
+    return result1 != 'none'
+        ? Scaffold(
+            body: StreamBuilder<ConnectivityResult>(
+                stream: Connectivity().onConnectivityChanged,
+                builder: (context, snapshot) {
+                  if (snapshot.data != ConnectivityResult.none) {
+                    return StreamBuilder<User?>(
+                        stream: FirebaseAuth.instance.authStateChanges(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return HomePage();
+                          } else {
+                            return WelcomePage();
+                          }
+                        });
+                  } else {
+                    return NoInternetPage();
+                  }
+                }),
+          )
+        : NoInternetPage();
   }
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:chappie/Provider/authentications/authPage.dart';
 import 'package:chappie/WIdgets/constants.dart';
 import 'package:chappie/WIdgets/myText.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,12 @@ class NoInternetPage extends StatelessWidget {
               Center(
                 child: GestureDetector(
                   // <---------------- Button "Google Login Button"-------------
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) {
+                      return AuthPage();
+                    }));
+                  },
                   child: Container(
                     height: screenHeight * 0.085,
                     width: screenWidth * 0.85,
