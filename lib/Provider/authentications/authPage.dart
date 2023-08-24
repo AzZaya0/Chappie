@@ -23,10 +23,7 @@ class _AuthPageState extends State<AuthPage> {
   dynamic result1;
   void Connectivitycheck() async {
     var result = await Connectivity().checkConnectivity();
-
-    setState(() {
-      result1 = result.name;
-    });
+    result1 = result.name;
   }
 
   @override
