@@ -45,6 +45,7 @@ class LoginPageProvider with ChangeNotifier {
           email: _emailController.text, password: _passController.text);
 
       Navigator.pop(context);
+      Navigator.pop(context);
     } on FirebaseException catch (e) {
       Navigator.pop(context);
 
