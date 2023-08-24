@@ -1,3 +1,4 @@
+import 'package:chappie/Provider/authentications/googleAuth.dart';
 import 'package:chappie/Screens/login&signup/signupPage.dart';
 import 'package:flutter/material.dart';
 
@@ -17,5 +18,10 @@ class LoginPageProvider with ChangeNotifier {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return SignupPage();
     }));
+  }
+
+  void googleLogin(context) {
+    GoogleSignin().signinWithGoogle();
+    ChangeNotifier();
   }
 }

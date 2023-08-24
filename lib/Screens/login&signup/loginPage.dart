@@ -31,7 +31,7 @@ class LoginPage extends StatelessWidget {
                 MyText(
                   text: 'Login to\nyour account',
                   color: kTextColor,
-                  fontsize: screenWidth*0.1,
+                  fontsize: screenWidth * 0.1,
                 ),
                 Center(
                   child: Image.asset(
@@ -67,7 +67,9 @@ class LoginPage extends StatelessWidget {
                       top: screenHeight * 0.03, bottom: screenHeight * 0.03),
                   child: Center(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        _loginProviderr.googleLogin(context);
+                      },
                       child: Image.asset(
                         'lib/assets/google.png',
                         height: screenHeight * 0.06,
