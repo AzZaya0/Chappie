@@ -48,10 +48,20 @@ class _AuthPageState extends State<AuthPage> {
                           }
                         });
                   } else {
-                    return NoInternetPage();
+                    return NoInternetPage(
+                      text: 'Waiting For Internet connection.',
+                    );
                   }
                 }),
           )
-        : NoInternetPage();
+        : NoInternetPage(
+            text: 'Tap to Refresh.',
+            ontap: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) {
+                return AuthPage();
+              }));
+            },
+          );
   }
 }

@@ -1,13 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: prefer_const_constructors
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'package:chappie/Provider/authentications/authPage.dart';
 import 'package:chappie/WIdgets/constants.dart';
 import 'package:chappie/WIdgets/myText.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 class NoInternetPage extends StatelessWidget {
-  const NoInternetPage({super.key});
+  NoInternetPage({
+    Key? key,
+    required this.text,
+    this.ontap,
+  }) : super(key: key);
+  final String text;
+  final void Function()? ontap;
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +52,7 @@ class NoInternetPage extends StatelessWidget {
               Center(
                 child: GestureDetector(
                   // <---------------- Button "Google Login Button"-------------
-                  onTap: () {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) {
-                      return AuthPage();
-                    }));
-                  },
+                  onTap: ontap,
                   child: Container(
                     height: screenHeight * 0.085,
                     width: screenWidth * 0.85,
@@ -79,7 +82,7 @@ class NoInternetPage extends StatelessWidget {
                       top: screenHeight * 0.02, bottom: screenHeight * 0.02),
                   child: Center(
                     child: MyText(
-                        text: 'Waiting For Internet connection.',
+                        text: text,
                         color: kSubColor,
                         fontsize: screenWidth * 0.04),
                   ),
