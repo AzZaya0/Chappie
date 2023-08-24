@@ -13,6 +13,6 @@ class WelcomePageProvider with ChangeNotifier {
   }
 
   void googleSignIn(context) {
-    GoogleSignin().signinWithGoogle().then((value) => Navigator.pop(context));
+    GoogleSignin().signinWithGoogle();
   }
 }

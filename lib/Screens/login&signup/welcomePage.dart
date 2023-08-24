@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:chappie/Provider/authentications/googleAuth.dart';
 import 'package:chappie/Provider/welcomePageProvider.dart';
 import 'package:chappie/WIdgets/constants.dart';
 import 'package:chappie/WIdgets/myButton.dart';
@@ -43,7 +44,9 @@ class WelcomePage extends StatelessWidget {
               Center(
                 child: GestureDetector(
                   // <---------------- Button "Google Login Button"-------------
-                  onTap: () {},
+                  onTap: () {
+                    provider.googleSignIn(context);
+                  },
                   child: Container(
                     height: screenHeight * 0.085,
                     width: screenWidth * 0.85,
