@@ -1,3 +1,4 @@
+import 'package:chappie/Screens/login&signup/signupPage.dart';
 import 'package:flutter/material.dart';
 
 class LoginPageProvider with ChangeNotifier {
@@ -9,4 +10,12 @@ class LoginPageProvider with ChangeNotifier {
   TextEditingController get passController => _passController;
 
   // obsecure texts
+
+  //function
+
+  void signup(context) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return SignupPage();
+    }));
+  }
 }

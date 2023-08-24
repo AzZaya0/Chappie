@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:chappie/Provider/loginPageProvider.dart';
+import 'package:chappie/Provider/signupPageProvider.dart';
 import 'package:chappie/Provider/welcomePageProvider.dart';
 import 'package:chappie/Screens/login&signup/welcomePage.dart';
 import 'package:chappie/firebase_options.dart';
@@ -19,6 +20,9 @@ Future<void> main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => LoginPageProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SignUpPageProvider(),
         )
       ],
       child: MaterialApp(
