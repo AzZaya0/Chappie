@@ -49,7 +49,7 @@ class _AuthPageState extends State<AuthPage> {
                         });
                   } else {
                     return NoInternetPage(
-                      text: 'Waiting For Internet connection.',
+                      text: 'Checking your Internet',
                     );
                   }
                 }),

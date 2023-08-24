@@ -67,7 +67,7 @@ class NoInternetPage extends StatelessWidget {
                           width: screenWidth * 0.05,
                         ),
                         MyText(
-                            text: 'Checking your Internet',
+                            text: text,
                             color: kTextColor,
                             fontsize: screenWidth * 0.05)
                       ],
@@ -82,7 +82,7 @@ class NoInternetPage extends StatelessWidget {
                       top: screenHeight * 0.02, bottom: screenHeight * 0.02),
                   child: Center(
                     child: MyText(
-                        text: text,
+                        text: "Waiting For Internet connection.",
                         color: kSubColor,
                         fontsize: screenWidth * 0.04),
                   ),
