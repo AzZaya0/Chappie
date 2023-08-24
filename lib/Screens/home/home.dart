@@ -18,13 +18,13 @@ class _HomePageState extends State<HomePage> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: kBlackColor,
       appBar: AppBar(
-        actions: [
-          Icon(
-            Icons.menu,
-            color: kTextColor,
-          )
-        ],
+        backgroundColor: kBlackColor,
+        leading: Icon(
+          Icons.menu,
+          color: kTextColor,
+        ),
         elevation: 0,
       ),
       body: Center(
