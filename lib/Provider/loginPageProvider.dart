@@ -21,8 +21,6 @@ class LoginPageProvider with ChangeNotifier {
   }
 
   void googleLogin(context) {
-    GoogleSignin().signinWithGoogle();
-
-    ChangeNotifier();
+    GoogleSignin().signinWithGoogle().then((value) => Navigator.pop(context));
   }
 }
