@@ -22,6 +22,7 @@ class LoginPageProvider with ChangeNotifier {
 
   void googleLogin(context) {
     GoogleSignin().signinWithGoogle();
+
     ChangeNotifier();
   }
 }
