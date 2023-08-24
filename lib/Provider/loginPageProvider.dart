@@ -42,7 +42,7 @@ class LoginPageProvider with ChangeNotifier {
 
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text, password: passController.text);
+          email: _emailController.text, password: _passController.text);
 
       Navigator.pop(context);
     } on FirebaseException catch (e) {

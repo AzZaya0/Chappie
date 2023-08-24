@@ -56,7 +56,9 @@ class SignupPage extends StatelessWidget {
                 child: MyButton(
                     screenWidth: screenWidth * 0.95,
                     screenHeight: screenHeight * 1,
-                    ontap: () {}),
+                    ontap: () {
+                      _signupProvider.signUp(context);
+                    }),
               ),
               Padding(
                 padding: EdgeInsets.only(
