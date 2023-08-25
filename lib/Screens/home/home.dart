@@ -67,8 +67,7 @@ class _HomePageState extends State<HomePage> {
               snapshot,
             ) {
               final userSnapshot = snapshot.data?.docs;
-              // Map<String, dynamic> data =
-              //     userSnapshot.data() as Map<String, dynamic>;
+              
               if (snapshot.hasData) {
                 return ListView.builder(
                     itemCount: userSnapshot!.length,
