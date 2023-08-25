@@ -3,6 +3,7 @@
 import 'package:chappie/WIdgets/constants.dart';
 
 import 'package:chappie/WIdgets/myText.dart';
+import 'package:chappie/repo/allUsers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -59,14 +60,43 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: kBlackColor,
           elevation: 0,
         ),
-        body: StreamBuilder(
-            stream: FirebaseFirestore.instance.collection('users').snapshots(),
+        body: StreamBuilder<QuerySnapshot>(
+            stream: GetUser().getallUser(),
             builder: (
               context,
               snapshot,
-              
             ) {
-              return Container();
+              final userSnapshot = snapshot.data?.docs;
+              // Map<String, dynamic> data =
+              //     userSnapshot.data() as Map<String, dynamic>;
+              if (snapshot.hasData) {
+                return ListView.builder(
+                    itemCount: userSnapshot!.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 50,
+                              child: ClipRRect(
+                                child: Image.network(
+                                    userSnapshot[index]['photo'].toString()),
+                              ),
+                            ),
+                            Column()
+                          ],
+                        ),
+                      );
+                    });
+              }
+              if (!snapshot.hasData) {
+                return CircularProgressIndicator();
+              }
+
+              return Container(
+                child: MyText(
+                    text: 'loading.....', color: kTextColor, fontsize: 20),
+              );
             }));
   }
 }
