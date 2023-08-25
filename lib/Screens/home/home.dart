@@ -27,30 +27,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: kBlackColor,
         elevation: 0,
       ),
-      drawer: SafeArea(
-        child: Drawer(
-          child: ListView(
-            children: [
-              MyDetails(
-                  image: user.photoURL!,
-                  screenHeight: screenHeight,
-                  screenWidth: screenWidth),
-              SizedBox(
-                height: screenHeight * 0.75,
-              ),
-              MyButton(
-                  screenWidth: screenWidth * 0.12,
-                  screenHeight: screenHeight,
-                  ontap: () {
-                    FirebaseAuth.instance.signOut();
-                    GoogleSignIn().signOut();
-                  })
-            ],
-          ),
-          width: screenWidth * 0.7,
-          backgroundColor: kDrawer,
-        ),
-      ),
       body: Center(
         child: GestureDetector(
           onTap: () {
