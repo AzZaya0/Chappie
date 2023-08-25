@@ -30,7 +30,7 @@ class MyButton extends StatelessWidget {
             text: 'Login',
             color: Colors.black,
             fontWeight: FontWeight.w600,
-            fontsize: screenWidth * 0.09),
+            fontsize: 23),
       ),
     );
   }

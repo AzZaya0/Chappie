@@ -1,6 +1,8 @@
 // ignore_for_file: sort_child_properties_last
 
+import 'package:chappie/Screens/home/drawer.dart';
 import 'package:chappie/WIdgets/constants.dart';
+import 'package:chappie/WIdgets/myButton.dart';
 import 'package:chappie/WIdgets/myText.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -26,51 +28,29 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
       ),
       drawer: SafeArea(
-          child: Drawer(
-        child: ListView(
-          children: [
-            ListTile(
-              focusColor: kSubColor,
-              onTap: () {},
-              title: Container(
-                child: Row(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(right: screenWidth * 0.03),
-                      decoration: BoxDecoration(
-                          color: kTextColor,
-                          borderRadius: BorderRadius.circular(200)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(2),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(400),
-                          child: Image.network(
-                            user.photoURL.toString(),
-                            height: screenHeight * 0.10,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        MyText(
-                            text: 'Ayush Gautam',
-                            color: kTextColor,
-                            fontsize: 22),
-                        MyText(
-                            text: 'ayush2020', color: kSubColor, fontsize: 18)
-                      ],
-                    )
-                  ],
-                ),
+        child: Drawer(
+          child: ListView(
+            children: [
+              MyDetails(
+                  image: user.photoURL!,
+                  screenHeight: screenHeight,
+                  screenWidth: screenWidth),
+              SizedBox(
+                height: screenHeight * 0.75,
               ),
-            )
-          ],
+              MyButton(
+                  screenWidth: screenWidth * 0.12,
+                  screenHeight: screenHeight,
+                  ontap: () {
+                    FirebaseAuth.instance.signOut();
+                    GoogleSignIn().signOut();
+                  })
+            ],
+          ),
+          width: screenWidth * 0.7,
+          backgroundColor: kDrawer,
         ),
-        width: screenWidth * 0.7,
-        backgroundColor: kDrawer,
-      )),
+      ),
       body: Center(
         child: GestureDetector(
           onTap: () {
