@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import '../../Screens/home/home.dart';
 
 class AuthPage extends StatefulWidget {
-  const AuthPage({super.key});
+  const AuthPage({Key? key}) : super(key: key);
 
   @override
   State<AuthPage> createState() => _AuthPageState();
@@ -21,14 +21,18 @@ class _AuthPageState extends State<AuthPage> {
   }
 
   dynamic result1;
-  void Connectivitycheck() async {
+
+  Future<void> Connectivitycheck() async {
     var result = await Connectivity().checkConnectivity();
-    result1 = result.name;
+    setState(() {
+      result1 = result;
+    });
+    print(result1);
   }
 
   @override
   Widget build(BuildContext context) {
-    return result1 != 'none'
+    return result1 != ConnectivityResult.none
         ? Scaffold(
             body: StreamBuilder<ConnectivityResult>(
                 stream: Connectivity().onConnectivityChanged,
