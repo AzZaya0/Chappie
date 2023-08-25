@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 Color kBlackColor = Colors.black;
 Color kSubColor = Color(0xffd4d4d4);
 Color kTextColor = Color(0xffffffff);
-
+Color kDrawer = Color(0xff222222);
 Color kButtonColor = Color(0xff41ead4);
 
 class MarginContainer extends StatelessWidget {
