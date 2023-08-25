@@ -4,7 +4,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:chappie/Provider/authentications/authPage.dart';
 import 'package:chappie/WIdgets/constants.dart';
 import 'package:chappie/WIdgets/myText.dart';
 
