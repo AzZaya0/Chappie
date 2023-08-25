@@ -1,7 +1,10 @@
-// ignore_for_file: sort_child_properties_last
+// ignore_for_file: sort_child_properties_last, prefer_const_constructors
 
 import 'package:chappie/WIdgets/constants.dart';
+
 import 'package:chappie/WIdgets/myText.dart';
+import 'package:chappie/repo/allUsers.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -20,71 +23,80 @@ class _HomePageState extends State<HomePage> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: kBlackColor,
-      appBar: AppBar(
         backgroundColor: kBlackColor,
-        elevation: 0,
-      ),
-      drawer: SafeArea(
-          child: Drawer(
-        child: ListView(
-          children: [
-            ListTile(
-              focusColor: kSubColor,
-              onTap: () {},
-              title: Container(
-                child: Row(
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(right: screenWidth * 0.03),
-                      decoration: BoxDecoration(
-                          color: kTextColor,
-                          borderRadius: BorderRadius.circular(200)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(2),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(400),
-                          child: Image.network(
-                            user.photoURL.toString(),
-                            height: screenHeight * 0.10,
-                          ),
-                        ),
-                      ),
+        appBar: AppBar(
+          toolbarHeight: screenHeight * 0.1,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: kTextColor,
+                    borderRadius: BorderRadius.circular(100)),
+                child: Padding(
+                  padding: const EdgeInsets.all(2),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(400),
+                    child: Image.network(
+                      user.photoURL!,
+                      height: screenHeight * 0.07,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        MyText(
-                            text: 'Ayush Gautam',
-                            color: kTextColor,
-                            fontsize: 22),
-                        MyText(
-                            text: 'ayush2020', color: kSubColor, fontsize: 18)
-                      ],
-                    )
-                  ],
+                  ),
                 ),
               ),
-            )
-          ],
-        ),
-        width: screenWidth * 0.7,
-        backgroundColor: kDrawer,
-      )),
-      body: Center(
-        child: GestureDetector(
-          onTap: () {
-            FirebaseAuth.instance.signOut();
-            GoogleSignIn().signOut();
-          },
-          child: Container(
-            height: screenHeight * 0.04,
-            width: screenWidth * 0.9,
-            color: kButtonColor,
-            child: MyText(text: 'Sign Out', color: kTextColor, fontsize: 20),
+              MyText(text: user.displayName!, color: kTextColor, fontsize: 28),
+              GestureDetector(
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  GoogleSignIn().signOut();
+                },
+                child: Icon(
+                  Icons.logout,
+                  size: 40,
+                ),
+              )
+            ],
           ),
+          backgroundColor: kBlackColor,
+          elevation: 0,
         ),
-      ),
-    );
+        body: StreamBuilder<QuerySnapshot>(
+            stream: GetUser().getallUser(),
+            builder: (
+              context,
+              snapshot,
+            ) {
+              final userSnapshot = snapshot.data?.docs;
+              
+              if (snapshot.hasData) {
+                return ListView.builder(
+                    itemCount: userSnapshot!.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        child: Row(
+                          children: [
+                            Container(
+                              height: 50,
+                              child: ClipRRect(
+                                child: Image.network(
+                                    userSnapshot[index]['photo'].toString()),
+                              ),
+                            ),
+                            Column()
+                          ],
+                        ),
+                      );
+                    });
+              }
+              if (!snapshot.hasData) {
+                return CircularProgressIndicator();
+              }
+
+              return Container(
+                child: MyText(
+                    text: 'loading.....', color: kTextColor, fontsize: 20),
+              );
+            }));
+            
   }
 }

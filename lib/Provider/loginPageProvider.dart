@@ -3,6 +3,7 @@
 import 'package:chappie/Provider/authentications/googleAuth.dart';
 import 'package:chappie/Screens/login&signup/signupPage.dart';
 import 'package:chappie/WIdgets/constants.dart';
+import 'package:chappie/repo/signupService.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,11 @@ class LoginPageProvider with ChangeNotifier {
   }
 
   void googleLogin(context) {
-    GoogleSignin().signinWithGoogle().then((value) => Navigator.pop(context));
+    GoogleSignin().signinWithGoogle().then((value) {
+      SignupService().store();
+      Navigator.pop(context);
+      
+    });
   }
 
   void SignIn(context) async {
@@ -41,11 +46,13 @@ class LoginPageProvider with ChangeNotifier {
         });
 
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text, password: _passController.text);
-
-      Navigator.pop(context);
-      Navigator.pop(context);
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: _emailController.text, password: _passController.text)
+          .then((value) {
+        Navigator.pop(context);
+        Navigator.pop(context);
+      });
     } on FirebaseException catch (e) {
       Navigator.pop(context);
 
