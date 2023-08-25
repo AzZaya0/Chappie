@@ -23,21 +23,7 @@ class MyDetails extends StatelessWidget {
       title: Container(
         child: Row(
           children: [
-            Container(
-              margin: EdgeInsets.only(right: screenWidth * 0.03),
-              decoration: BoxDecoration(
-                  color: kTextColor, borderRadius: BorderRadius.circular(200)),
-              child: Padding(
-                padding: const EdgeInsets.all(2),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(400),
-                  child: Image.network(
-                    image,
-                    height: screenHeight * 0.10,
-                  ),
-                ),
-              ),
-            ),
+            
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
