@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             height: screenHeight * 0.04,
             width: screenWidth * 0.9,
             color: kButtonColor,
-            child: MyText(text: 'SignOut', color: kTextColor, fontsize: 20),
+            child: MyText(text: 'Sign Out', color: kTextColor, fontsize: 20),
           ),
         ),
       ),
