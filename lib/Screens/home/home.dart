@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                             e.data() as Map<String, dynamic>))
                         .toList() ??
                     [];
-                print(userdatalist);
+                print((userdatalist[0]).toJson());
                 return ListView.builder(
                     itemCount: userdatalist.length,
                     itemBuilder: (context, index) {

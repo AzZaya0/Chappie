@@ -23,6 +23,6 @@ class UserRepo {
         .collection('users')
         .doc(Constants.auth.currentUser!.email)
         .set(Newuser
-            .toJson()); //tojeson came from usermodel which converts dart to void googleSignIn(context) {
+            .toJson()); //tojeson came from usermodel which converts dart to json
   }
 }
