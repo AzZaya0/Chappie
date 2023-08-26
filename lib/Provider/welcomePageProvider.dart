@@ -1,4 +1,5 @@
 import 'package:chappie/Screens/login&signup/loginPage.dart';
+import 'package:chappie/repo/userRepo.dart';
 import 'package:flutter/material.dart';
 
 import 'authentications/googleAuth.dart';
@@ -13,6 +14,13 @@ class WelcomePageProvider with ChangeNotifier {
   }
 
   void googleSignIn(context) {
-    GoogleSignin().signinWithGoogle();
+    GoogleSignin().signinWithGoogle().then((value) async {
+      if (value != null) {
+        if (await UserRepo.userexist()) {
+        } else {
+          await UserRepo.createusers();
+        }
+      }
+    });
   }
 }

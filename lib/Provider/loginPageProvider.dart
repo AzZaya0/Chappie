@@ -3,7 +3,8 @@
 import 'package:chappie/Provider/authentications/googleAuth.dart';
 import 'package:chappie/Screens/login&signup/signupPage.dart';
 import 'package:chappie/WIdgets/constants.dart';
-import 'package:chappie/repo/signupService.dart';
+
+import 'package:chappie/repo/userRepo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +30,15 @@ class LoginPageProvider with ChangeNotifier {
   }
 
   void googleLogin(context) {
-    GoogleSignin().signinWithGoogle().then((value) {
-      SignupService().store();
-      Navigator.pop(context);
-      
+    GoogleSignin().signinWithGoogle().then((value) async {
+      if (value != null) {
+        if (await UserRepo.userexist()) {
+          Navigator.pop(context);
+        } else {
+          await UserRepo.createusers();
+          Navigator.pop(context);
+        }
+      }
     });
   }
 
