@@ -32,6 +32,7 @@ class MarginContainer extends StatelessWidget {
   }
 }
 
+//global constaints
 class Constants {
   static FirebaseAuth auth = FirebaseAuth.instance;
   static FirebaseFirestore firestore = FirebaseFirestore.instance;

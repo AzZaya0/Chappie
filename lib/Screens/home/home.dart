@@ -77,7 +77,8 @@ class _HomePageState extends State<HomePage> {
                             e.data() as Map<String, dynamic>))
                         .toList() ??
                     [];
-                print((userdatalist[0]).toJson());
+                print((userdatalist[0])
+                    .toJson()); //userdatalist containts instance of model
                 return ListView.builder(
                     itemCount: userdatalist.length,
                     itemBuilder: (context, index) {
