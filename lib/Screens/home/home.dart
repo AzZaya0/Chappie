@@ -4,6 +4,7 @@ import 'package:chappie/WIdgets/constants.dart';
 
 import 'package:chappie/WIdgets/myText.dart';
 import 'package:chappie/Database/allUsers.dart';
+import 'package:chappie/models/usermodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -17,11 +18,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<UserModel> userdatalist = [];
+
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
         backgroundColor: kBlackColor,
         appBar: AppBar(
@@ -66,11 +70,16 @@ class _HomePageState extends State<HomePage> {
               context,
               snapshot,
             ) {
-              final userSnapshot = snapshot.data?.docs;
-
               if (snapshot.hasData) {
+                final data = snapshot.data?.docs;
+                userdatalist = data
+                        ?.map((e) => UserModel.fromJson(
+                            e.data() as Map<String, dynamic>))
+                        .toList() ??
+                    [];
+                print(userdatalist);
                 return ListView.builder(
-                    itemCount: userSnapshot!.length,
+                    itemCount: userdatalist.length,
                     itemBuilder: (context, index) {
                       return Container(
                         child: Row(
@@ -78,11 +87,18 @@ class _HomePageState extends State<HomePage> {
                             Container(
                               height: 50,
                               child: ClipRRect(
-                                child: Image.network(
-                                    userSnapshot[index]['photo'].toString()),
+                                child:
+                                    Image.network((userdatalist[index]).photo),
                               ),
                             ),
-                            Column()
+                            Column(
+                              children: [
+                                MyText(
+                                    text: (userdatalist[index]).display_name,
+                                    color: Colors.white,
+                                    fontsize: 20)
+                              ],
+                            )
                           ],
                         ),
                       );
