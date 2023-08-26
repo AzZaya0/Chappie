@@ -34,9 +34,11 @@ class LoginPageProvider with ChangeNotifier {
       if (value != null) {
         if (await UserRepo.userexist()) {
           Navigator.pop(context);
+          UserRepo.userInfo();
         } else {
           await UserRepo.createusers();
           Navigator.pop(context);
+          UserRepo.userInfo();
         }
       }
     });

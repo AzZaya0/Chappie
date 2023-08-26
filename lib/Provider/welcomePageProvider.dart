@@ -17,8 +17,10 @@ class WelcomePageProvider with ChangeNotifier {
     GoogleSignin().signinWithGoogle().then((value) async {
       if (value != null) {
         if (await UserRepo.userexist()) {
+          UserRepo.userInfo();
         } else {
           await UserRepo.createusers();
+          UserRepo.userInfo();
         }
       }
     });

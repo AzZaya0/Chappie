@@ -1,5 +1,6 @@
-// ignore_for_file: sort_child_properties_last, prefer_const_constructors
+// ignore_for_file: sort_child_properties_last, prefer_const_constructors, avoid_print
 
+import 'package:chappie/Database/userRepo.dart';
 import 'package:chappie/WIdgets/constants.dart';
 
 import 'package:chappie/WIdgets/myText.dart';
@@ -42,13 +43,16 @@ class _HomePageState extends State<HomePage> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(400),
                     child: Image.network(
-                      user.photoURL!,
+                      UserRepo.me!.photo,
                       height: screenHeight * 0.07,
                     ),
                   ),
                 ),
               ),
-              MyText(text: user.displayName!, color: kTextColor, fontsize: 28),
+              MyText(
+                  text: UserRepo.me!.display_name,
+                  color: kTextColor,
+                  fontsize: 28),
               GestureDetector(
                 onTap: () {
                   FirebaseAuth.instance.signOut();

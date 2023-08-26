@@ -5,10 +5,10 @@ class UserModel {
     required this.username,
     required this.display_name,
   });
-  late final String email;
-  late final String photo;
-  late final String username;
-  late final String display_name;
+  late String email;
+  late String photo;
+  late String username;
+  late String display_name;
 
   UserModel.fromJson(Map<String, dynamic> json) {
     email = json['email'] ?? '';
