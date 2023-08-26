@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../WIdgets/myText.dart';
-import '../repo/userRepo.dart';
+import '../Database/userRepo.dart';
 import 'authentications/googleAuth.dart';
 
 class SignUpPageProvider with ChangeNotifier {

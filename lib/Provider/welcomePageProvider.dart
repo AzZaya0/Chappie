@@ -1,5 +1,5 @@
 import 'package:chappie/Screens/login&signup/loginPage.dart';
-import 'package:chappie/repo/userRepo.dart';
+import 'package:chappie/Database/userRepo.dart';
 import 'package:flutter/material.dart';
 
 import 'authentications/googleAuth.dart';

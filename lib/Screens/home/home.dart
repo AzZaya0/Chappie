@@ -3,7 +3,7 @@
 import 'package:chappie/WIdgets/constants.dart';
 
 import 'package:chappie/WIdgets/myText.dart';
-import 'package:chappie/repo/allUsers.dart';
+import 'package:chappie/Database/allUsers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
               snapshot,
             ) {
               final userSnapshot = snapshot.data?.docs;
-              
+
               if (snapshot.hasData) {
                 return ListView.builder(
                     itemCount: userSnapshot!.length,
@@ -97,6 +97,5 @@ class _HomePageState extends State<HomePage> {
                     text: 'loading.....', color: kTextColor, fontsize: 20),
               );
             }));
-            
   }
 }

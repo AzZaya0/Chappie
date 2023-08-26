@@ -4,7 +4,7 @@ import 'package:chappie/Provider/authentications/googleAuth.dart';
 import 'package:chappie/Screens/login&signup/signupPage.dart';
 import 'package:chappie/WIdgets/constants.dart';
 
-import 'package:chappie/repo/userRepo.dart';
+import 'package:chappie/Database/userRepo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
