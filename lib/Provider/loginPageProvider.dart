@@ -33,12 +33,12 @@ class LoginPageProvider with ChangeNotifier {
     GoogleSignin().signinWithGoogle().then((value) async {
       if (value != null) {
         if (await UserRepo.userexist()) {
-          Navigator.pop(context);
           UserRepo.userInfo();
+          Navigator.pop(context);
         } else {
           await UserRepo.createusers();
-          Navigator.pop(context);
           UserRepo.userInfo();
+          Navigator.pop(context);
         }
       }
     });

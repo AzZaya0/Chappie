@@ -2,7 +2,7 @@ import 'package:chappie/WIdgets/constants.dart';
 import 'package:chappie/models/usermodel.dart';
 
 class UserRepo {
-  static late UserModel me;
+  static UserModel? me;
   // store Current user info on me
   static Future<void> userInfo() async {
     return await Constants.firestore
@@ -12,6 +12,7 @@ class UserRepo {
         .then((user) async {
       if (user.exists) {
         me = UserModel.fromJson(user.data()!);
+        print(me?.display_name.toString());
       } else {
         await createusers().then((value) => userInfo());
       }

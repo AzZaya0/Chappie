@@ -20,6 +20,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<UserModel> userdatalist = [];
+  @override
+  void initState() {
+    super.initState();
+    UserRepo.userInfo();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +48,14 @@ class _HomePageState extends State<HomePage> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(400),
                     child: Image.network(
-                      UserRepo.me!.photo,
+                      UserRepo.me?.photo ?? '',
                       height: screenHeight * 0.07,
                     ),
                   ),
                 ),
               ),
               MyText(
-                  text: UserRepo.me!.display_name,
+                  text: UserRepo.me?.display_name ?? '',
                   color: kTextColor,
                   fontsize: 28),
               GestureDetector(
@@ -81,8 +86,7 @@ class _HomePageState extends State<HomePage> {
                             e.data() as Map<String, dynamic>))
                         .toList() ??
                     [];
-                print((userdatalist[0])
-                    .toJson()); //userdatalist containts instance of model
+                //userdatalist containts instance of model
                 return ListView.builder(
                     itemCount: userdatalist.length,
                     itemBuilder: (context, index) {
