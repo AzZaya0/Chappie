@@ -23,12 +23,12 @@ class SignUpPageProvider with ChangeNotifier {
     GoogleSignin().signinWithGoogle().then((value) async {
       if (value != null) {
         if (await UserRepo.userexist()) {
-          UserRepo.userInfo();
+          //   UserRepo.userInfo();
           Navigator.pop(context);
           Navigator.pop(context);
         } else {
           await UserRepo.createusers();
-          UserRepo.userInfo();
+          //   UserRepo.userInfo();
           Navigator.pop(context);
           Navigator.pop(context);
         }

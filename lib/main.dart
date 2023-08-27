@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:chappie/Provider/authentications/authPage.dart';
+import 'package:chappie/Provider/homeprovider.dart';
 import 'package:chappie/Provider/loginPageProvider.dart';
 import 'package:chappie/Provider/signupPageProvider.dart';
 import 'package:chappie/Provider/welcomePageProvider.dart';
@@ -24,7 +25,8 @@ Future<void> main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => SignUpPageProvider(),
-        )
+        ),
+        ChangeNotifierProvider(create: (_) => HomePovider())
       ],
       child: MaterialApp(
         home: AuthPage(),
